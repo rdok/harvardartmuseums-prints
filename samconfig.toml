@@ -1,0 +1,27 @@
+version = 0.1
+[prod]
+[prod.deploy]
+[prod.deploy.parameters]
+parameter_overrides = [
+    "WildcardCertificateARN=arn:aws:acm:us-east-1:353196159109:certificate/b7e23fbf-69a3-440f-8560-59f240f2cc09",
+    "BaseDomainName=rdok.co.uk",
+    "Route53HostedZoneId=ZSY7GT2NEDPN0"
+]
+
+[test]
+[test.deploy]
+[test.deploy.parameters]
+parameter_overrides = [
+    "WildcardCertificateARN=arn:aws:acm:us-east-1:353196159109:certificate/b7e23fbf-69a3-440f-8560-59f240f2cc09",
+    "BaseDomainName=rdok.co.uk",
+    "Route53HostedZoneId=ZSY7GT2NEDPN0"
+]
+
+[dev]
+[dev.deploy]
+[dev.deploy.parameters]
+parameter_overrides = [
+    "WildcardCertificateARN=arn:aws:acm:us-east-1:353196159109:certificate/b7e23fbf-69a3-440f-8560-59f240f2cc09",
+    "BaseDomainName=rdok.co.uk",
+    "Route53HostedZoneId=ZSY7GT2NEDPN0"
+]

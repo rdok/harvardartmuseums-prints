@@ -1,0 +1,62 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Manages domain, CDN, and static website.
+Transform: AWS::Serverless-2016-10-31
+Parameters:
+  BaseDomainName: { Type: String }
+  Route53HostedZoneId: { Type: String }
+  WildcardCertificateARN: { Type: String }
+Resources:
+  Domain:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      HostedZoneId: !Ref Route53HostedZoneId
+      Name: !Sub "${AWS::StackName}.${BaseDomainName}"
+      Type: A
+      AliasTarget:
+        HostedZoneId: Z2FDTNDATAQYW2
+        DNSName: !GetAtt [CDN, DomainName]
+  CDN:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        DefaultRootObject: index.html
+        Aliases: [!Sub "${AWS::StackName}.${BaseDomainName}"]
+        DefaultCacheBehavior:
+          TargetOriginId: StaticAssetsBucket
+          ViewerProtocolPolicy: redirect-to-https
+          ForwardedValues: { QueryString: true }
+        Origins:
+          - Id: StaticAssetsBucket
+            DomainName: !GetAtt StaticAssetsBucket.RegionalDomainName
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${CDNIdentity}"
+        Enabled: true
+        ViewerCertificate:
+          AcmCertificateArn: !Ref WildcardCertificateARN
+          MinimumProtocolVersion: TLSv1
+          SslSupportMethod: sni-only
+  CDNIdentity:
+    Type: "AWS::CloudFront::CloudFrontOriginAccessIdentity"
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: !Sub "${AWS::StackName}"
+  StaticAssetsBucket:
+    Type: AWS::S3::Bucket
+  StaticAssetsPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref StaticAssetsBucket
+      PolicyDocument:
+        Statement:
+          Effect: Allow
+          Action: s3:GetObject
+          Principal: { CanonicalUser: !GetAtt CDNIdentity.S3CanonicalUserId }
+          Resource: !Sub "${StaticAssetsBucket.Arn}/*"
+Outputs:
+  DomainName: { Value: !Sub "${AWS::StackName}.${BaseDomainName}" }
+  StaticAssetsBucketName:
+    Description: Contains static assets of website.
+    Value: !Ref StaticAssetsBucket
+  DistributionID:
+    Value: !Ref CDN
+    Description: CloudFront distribution ID; serves static assets files.
