@@ -30,8 +30,8 @@ jobs:
         with: { node-version: "16", cache: "yarn" }
       - name: Install Yarn packages
         run: yarn install --frozen-lockfile
-      - name: Compile TypeScript to JavaScript
-        run: npm run build
+      - name: Build
+        run: yarn run build
 
   test:
     runs-on: ubuntu-latest
