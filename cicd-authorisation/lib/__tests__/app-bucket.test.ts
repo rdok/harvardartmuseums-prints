@@ -38,7 +38,7 @@ test("Authorise getting hosted zone of", () => {
             "s3:GetObject",
           ],
           Effect: "Allow",
-          Resource: `arn:aws:s3:::${stackRegex}/*`,
+          Resource: `arn:aws:s3:::${stackRegex}`,
         },
       ]),
     },
