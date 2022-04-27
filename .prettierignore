@@ -3,3 +3,4 @@ dist/**
 coverage/**
 cicd-authorisation/cdk.out/**
 **/*.generated.ts
+build/**
