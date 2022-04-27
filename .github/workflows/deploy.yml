@@ -103,7 +103,7 @@ jobs:
             --stack-name ${{ env.aws_stack_name }} \
             --query 'Stacks[0].Outputs[?OutputKey==`StaticAssetsBucketName`].OutputValue' \
             --output text)
-          aws s3 sync build s3://$${STATIC_ASSETS_BUCKET_NAME}
+          aws s3 sync build s3://${STATIC_ASSETS_BUCKET_NAME}
 
       - name: Set GitHub environment URL
         id: github_environment_url
