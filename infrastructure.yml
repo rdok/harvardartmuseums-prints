@@ -53,7 +53,7 @@ Resources:
           Principal: { CanonicalUser: !GetAtt CDNIdentity.S3CanonicalUserId }
           Resource: !Sub "${StaticAssetsBucket.Arn}/*"
 Outputs:
-  DomainName: { Value: !Sub "${AWS::StackName}.${BaseDomainName}" }
+  DomainName: { Value: !Sub "https://${AWS::StackName}.${BaseDomainName}" }
   StaticAssetsBucketName:
     Description: Contains static assets of website.
     Value: !Ref StaticAssetsBucket

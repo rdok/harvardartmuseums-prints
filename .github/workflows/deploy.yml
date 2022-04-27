@@ -109,7 +109,7 @@ jobs:
         id: github_environment_url
         run: |
           URL=$(aws cloudformation describe-stacks \
-              --stack-name ${{ env.aws_stack_name }} \
-              --query 'Stacks[0].Outputs[?OutputKey==`DomainName`].OutputValue' \
-              --output text)
+            --stack-name ${{ env.aws_stack_name }} \
+            --query 'Stacks[0].Outputs[?OutputKey==`DomainName`].OutputValue' \
+            --output text)
           echo ::set-output name=value::"${URL}"
