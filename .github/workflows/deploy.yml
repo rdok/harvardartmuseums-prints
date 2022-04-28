@@ -114,7 +114,7 @@ jobs:
           aws s3 sync build/static s3://${STATIC_ASSETS_BUCKET_NAME}/static/ \
             --cache-control max-age=31536000,public,immutable
 
-          aws s3 sync ./ s3://${STATIC_ASSETS_BUCKET_NAME}// \
+          aws s3 sync build s3://${STATIC_ASSETS_BUCKET_NAME}// \
             --cache-control max-age=0,public,must-revalidate \
             --exclude "static/*" \
             --delete
