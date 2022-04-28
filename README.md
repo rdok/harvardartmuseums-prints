@@ -4,8 +4,10 @@
 
 > Explore top prints from Harvard Art Museums, ordered by rank, having images, verified to best standard. Consumes GraphQL https://github.com/rdok/harvardartmuseums-graphql
 
-## Develop
-
+## Features
+- Paginate through top prints
+- Consumes GraphQL API with minimum required fields.
+- Assets are cached optimised using Next.js conventions; removing the need to use CloudFront invalidation.
 - See `Makefile` for commands. E.g. `make` to start development.
 - Generates GraphQL TS Types from harvardartmuseums-graphql
 
