@@ -19,7 +19,7 @@ import { useSearchParams } from "react-router-dom";
 
 export function TopPrints() {
   const [searchParams] = useSearchParams();
-  const pageNumber = Number(searchParams.get("currentPage")) ?? 1;
+  const pageNumber = Number(searchParams.get("currentPage") ?? 1);
   const pageSize = 10;
 
   const { loading, error, data } = useQuery<Objects, ObjectsVariables>(
