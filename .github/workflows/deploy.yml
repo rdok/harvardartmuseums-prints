@@ -45,7 +45,7 @@ jobs:
           echo ::set-output name=environment::"${ENVIRONMENT}"
           echo "aws_cicd_stack_name=${ORG}-cicd-${NAME}" >> $GITHUB_ENV
           echo "aws_stack_name=${ORG}-${ENVIRONMENT}-${NAME}" >> $GITHUB_ENV
-          
+
           echo "aws_stack_name_graphql=${ORG}-${ENVIRONMENT}-harvardartmuseums-graphql" >> $GITHUB_ENV
 
           echo "AWS_DEFAULT_REGION=${AWS_REGION}" >> $GITHUB_ENV

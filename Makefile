@@ -7,11 +7,6 @@ export AWS_PROFILE=cicd_harvardartmuseums_prints
 start:
 	yarn start
 
-prettier:
-	npm run prettier
-prettier-fix:
-	npm run prettier:fix
-
 build-deploy-cicd:
 	yarn build
 	make build-sam
