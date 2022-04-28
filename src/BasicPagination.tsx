@@ -3,10 +3,12 @@ import { Pagination } from "react-bootstrap";
 export function BasicPagination(props: { active: number; totalPages: number }) {
   let { active, totalPages } = props;
   let prevPage = active - 1;
+  const minPage = Math.max(active - 3, 1);
+  const maxPage = minPage + 6;
   prevPage = prevPage < 1 ? 1 : prevPage;
 
   let items = [];
-  for (let number = 1; number <= 7; number++) {
+  for (let number = minPage; number <= maxPage; number++) {
     items.push(
       <Pagination.Item
         key={number}
