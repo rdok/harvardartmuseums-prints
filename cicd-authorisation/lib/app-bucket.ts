@@ -27,6 +27,7 @@ export class AppBucket {
           "s3:GetBucketPolicy",
           "s3:PutObject",
           "s3:GetObject",
+          "s3:DeleteObject",
         ],
       })
     );
