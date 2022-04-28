@@ -40,3 +40,11 @@ build-deploy-cicd:
 
 build-sam:
 	sam build --template infrastructure.yml
+
+check:
+	make build
+	make test
+	make prettier
+
+test:
+	export CI=true; yarn test
