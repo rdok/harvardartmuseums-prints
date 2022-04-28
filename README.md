@@ -4,7 +4,6 @@
 
 > Explore top prints from Harvard Art Museums, ordered by rank, having images, verified to best standard. Consumes GraphQL https://github.com/rdok/harvardartmuseums-graphql
 
-
 ## Develop
 
 - See `Makefile` for commands. E.g. `make` to start development.

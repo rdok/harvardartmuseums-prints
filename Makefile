@@ -48,3 +48,8 @@ check:
 
 test:
 	export CI=true; yarn test
+
+prettier:
+	npm run prettier
+prettier-fix:
+	npm run prettier:fix
