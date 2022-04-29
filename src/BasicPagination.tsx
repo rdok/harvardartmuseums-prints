@@ -4,7 +4,7 @@ export function BasicPagination(props: { active: number; totalPages: number }) {
   let { active, totalPages } = props;
   let prevPage = active - 1;
   const minPage = Math.max(active - 3, 1);
-  const maxPage = minPage + 6;
+  const maxPage = Math.min(minPage + 6, totalPages);
   prevPage = prevPage < 1 ? 1 : prevPage;
 
   let items = [];
