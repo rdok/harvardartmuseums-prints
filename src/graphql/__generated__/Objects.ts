@@ -13,7 +13,7 @@ export interface Objects_objects_data {
   __typename: "ObjectResource";
   id: string;
   rank: number;
-  primaryImageUrl: string | null;
+  primaryImageUrl: string;
   title: string;
   url: string;
   dateBegin: string | null;

@@ -25,7 +25,7 @@ function makePrint() {
     __typename: "ObjectResource",
     id: "123",
     rank: 123,
-    primaryImageUrl: null,
+    primaryImageUrl: 'https://via.placeholder.com/300',
     title: "Title",
     url: "https://url.com",
     dateBegin: null,

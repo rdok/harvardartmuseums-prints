@@ -5,10 +5,7 @@ export function Print(props: { print: Objects_objects_data }) {
   const { print } = props;
   return (
     <Card style={{ width: "38rem" }}>
-      <Card.Img
-        variant="top"
-        src={print.primaryImageUrl ?? "holder.js/100px180"}
-      />
+      <Card.Img variant="top" src={print.primaryImageUrl} />
       <Card.Body>
         <Card.Title>{print.title}</Card.Title>
         <ListGroup variant="flush">
