@@ -49,7 +49,7 @@ export function TopPrints() {
 
   const prints = data.objects.data ?? [];
   const pagination = data.objects;
-  const totalPages = Math.floor(pagination.totalPages / pageSize);
+  const totalPages = pagination.totalPages;
 
   return (
     <>

@@ -23,7 +23,7 @@ export function BasicPagination(props: { active: number; totalPages: number }) {
   return (
     <div>
       <Pagination>
-        <Pagination.First href={`?currentPage=1`} key={1} />
+        <Pagination.First href={`?currentPage=1`} key={"first-page"} />
         <Pagination.Prev href={`?currentPage=${prevPage}`} key={prevPage} />
         {items}
         <Pagination.Last href={`?currentPage=${totalPages}`} key={totalPages} />
